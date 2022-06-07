@@ -10,16 +10,14 @@ weatherForm.addEventListener("submit", (e) => {
   messageOne.textContent = "Loading...";
   messageTwo.textContent = " ";
   messageThree.textContent = " ";
-  fetch(`http://127.0.0.1:5000/weather?address=${location}`).then(
-    (response) => {
-      response.json().then((data) => {
-        messageOne.textContent = data.placeName;
-        messageTwo.textContent = data.weather_descriptions;
-        messageThree.textContent = data.feelslike;
-        //     console.log(data.placeName);
-        //     console.log(data.weather_descriptions);
-        //     console.log(data.feelslike);
-      });
-    }
-  );
+  fetch(`/weather?address=${location}`).then((response) => {
+    response.json().then((data) => {
+      messageOne.textContent = data.placeName;
+      messageTwo.textContent = data.weather_descriptions;
+      messageThree.textContent = data.feelslike;
+      //     console.log(data.placeName);
+      //     console.log(data.weather_descriptions);
+      //     console.log(data.feelslike);
+    });
+  });
 });
